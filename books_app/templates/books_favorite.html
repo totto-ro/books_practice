@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./../static/css/favorites.css') }}">
+    <title>Favorite Author</title>
+</head>
+<body>
+    <main>
+        <section class="leftSide">
+            <h1>All Books</h1>
+            <div class="tableDiv">
+                <div>
+                    <ul>
+                        <li><h2>Favorite by:</h2></li>
+                        <li>{{}}</li>
+                    </ul>
+                </div>
+            </div>
+            <a class="homelink" href="">Home</a>
+        </section>
+        <section class="rightSide">
+            <form action="">
+                <h1>{{}}'s favorites</h1>
+                <div class="inputLines">
+                    <select name="book" id="book">
+                        <option value="">--Select Book--</option>
+                        <option value="">{{}}</option>
+                    </select>
+                </div>
+                <button type="submit">
+                    Add
+                </button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
+</html>

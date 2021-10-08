@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./../static/css/books_authors.css') }}">
+    <title>Authors</title>
+</head>
+<body>
+    <main>
+        <section class="leftSide">
+            <form action="">
+                <h1>New Books</h1>
+                <div class="inputLines">
+                    <label for="title">
+                        Title:
+                    </label>
+                    <input type="text" id="title" name="title" />
+                </div>
+                <div class="inputLines">
+                    <label for="num_of_pages">
+                        Number of pages:
+                    </label>
+                    <input type="text" id="num_of_pages" name="num_of_pages" />
+                </div>
+                <button type="submit">
+                    Create
+                </button>
+            </form>
+            <a class="homelink" href="">Home</a>
+        </section>
+        <section class="rightSide">
+            <h1>All Books</h1>
+            <div>
+                <ul>
+                    <li> </li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
