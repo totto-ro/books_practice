@@ -10,7 +10,7 @@
 <body>
     <main>
         <section class="leftSide">
-            <form action="">
+            <form action="/books/add" method="POST">
                 <h1>New Books</h1>
                 <div class="inputLines">
                     <label for="title">
@@ -28,13 +28,15 @@
                     Create
                 </button>
             </form>
-            <a class="homelink" href="">Home</a>
+            <a class="homelink" href="/authors">Home</a>
         </section>
         <section class="rightSide">
             <h1>All Books</h1>
             <div>
                 <ul>
-                    <li> </li>
+                    {% for element in books %}
+                    <li> <a href="/book/{{ element['id'] }}">{{element['title']}}</a> </li>
+                    {% endfor %}
                 </ul>
             </div>
         </section>

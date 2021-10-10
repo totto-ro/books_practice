@@ -20,22 +20,24 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for element in authors.books %}
                         <tr>
-                            <td>{{}}</td>
-                            <td>{{}}</td>
+                            <td>{{ element['title'] }}</td>
+                            <td>{{ element['num_of_pages'] }}</td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
-            <a class="homelink" href="">Home</a>
+            <a class="homelink" href="/authors">Home</a>
         </section>
         <section class="rightSide">
             <form action="">
-                <h1>{{}}'s favorites</h1>
+                <h1>{{ authors['name'] }}'s favorites</h1>
                 <div class="inputLines">
                     <select name="book" id="book">
                         <option value="">--Select Book--</option>
-                        <option value="">{{}}</option>
+                        <option value=""> </option>
                     </select>
                 </div>
                 <button type="submit">

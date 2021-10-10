@@ -10,24 +10,29 @@
 <body>
     <main>
         <section class="leftSide">
-            <h1>All Books</h1>
+            <h1>Title: {{books.title}}</h1>
             <div class="tableDiv">
                 <div>
                     <ul>
                         <li><h2>Favorite by:</h2></li>
-                        <li>{{}}</li>
+                        {% for element in books.authors %}
+                        <li>{{element.name}}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
-            <a class="homelink" href="">Home</a>
+            <a class="homelink" href="/authors">Home</a>
         </section>
         <section class="rightSide">
             <form action="">
-                <h1>{{}}'s favorites</h1>
+                <h1>Add Book's favorite</h1>
+                
                 <div class="inputLines">
                     <select name="book" id="book">
                         <option value="">--Select Book--</option>
-                        <option value="">{{}}</option>
+                        {% for element in unfavorited_authors %}
+                        <option value="{{element['id']}}"> {{element['name']}} </option>
+                        {% endfor %}
                     </select>
                 </div>
                 <button type="submit">
