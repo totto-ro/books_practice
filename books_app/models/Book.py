@@ -35,16 +35,6 @@ class Book:
         return results
 
 
-#    @classmethod 
-#    def get_by_id( cls, dataID ):
-#        query = "SELECT* FROM books LEFT JOIN favorites ON books.id = favorites.book_id LEFT JOIN authors ON authors.id = favorites.author_id  WHERE books.id = %(id)s;"
-#        data = {
-#
-#       }
-#       
-#        results = connectToMySQL('books_db').query_db(query, dataID)
-#        return results
-
     @classmethod 
     def get_by_id( cls, dataID ):
         query = "SELECT* FROM books LEFT JOIN favorites ON books.id = favorites.book_id LEFT JOIN authors ON authors.id = favorites.author_id  WHERE books.id = %(id)s;"
@@ -61,4 +51,27 @@ class Book:
             books.authors.append( Author( row['id'], row['name'], row['created_at'], row['updated_at'] ) )
         return books
 
-    
+    @classmethod
+    def add_fav(cls, authorID, bookID):
+        query = "INSERT INTO favorites( author_id, book_id ) VALUES ( %(author_id)s, %(book_id)s );"
+        data ={
+            "author_id" : authorID,
+            "book_id" : bookID
+        }
+        results = connectToMySQL('books_db').query_db(query, data)
+        return results
+
+    @classmethod
+    def unfavorited_books(cls, infoID):
+        query = "SELECT * FROM books WHERE books.id NOT IN ( SELECT book_id FROM favorites WHERE author_id = %(id)s );"
+        data = {
+            "id": infoID
+        }
+        results = connectToMySQL('books_db').query_db(query, data)
+        print(results)
+        print('hello')
+        books = []
+        for element in results:
+            books.append( Book( element['id'], element['title'], element['num_of_pages'], element['created_at'], element['updated_at'] ) )
+        return books
+        

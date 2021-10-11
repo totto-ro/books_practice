@@ -29,7 +29,15 @@ def show_book( id ):
     dataID = id
     results = Book.get_by_id( dataID )
     print(results.authors)
-    #authorID = id
-    #unfavorited_authors = Author.unfavorited_authors( authorID )
-    #print(unfavorited_authors)
-    return render_template( "books_favorite.html", books = results)#, unfavorited_authors = unfavorited_authors )
+    unfavorited_authors = Author.unfavorited_authors( dataID )
+    print(unfavorited_authors)
+    return render_template( "books_favorite.html", books = results, unfavorited_authors = unfavorited_authors )
+
+
+@app.route( '/book/fav', methods=['POST'] )
+def joinFavBook( ):
+    authorID = request.form[ 'author_id' ]
+    bookID = request.form[ 'book_id' ]
+    result = Book.add_fav( authorID, bookID )
+    print( result )
+    return redirect(f"/author/{request.form['author_id']}")

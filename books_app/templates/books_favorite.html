@@ -24,14 +24,14 @@
             <a class="homelink" href="/authors">Home</a>
         </section>
         <section class="rightSide">
-            <form action="">
+            <form action="/author/fav" method="POST">
                 <h1>Add Book's favorite</h1>
-                
+                <input type="hidden" name= "book_id" value="{{ books.id }}">
                 <div class="inputLines">
-                    <select name="book" id="book">
-                        <option value="">--Select Book--</option>
+                    <select name="author_id" id="book">
+                        <option value="">--Select Author--</option>
                         {% for element in unfavorited_authors %}
-                        <option value="{{element['id']}}"> {{element['name']}} </option>
+                        <option value="{{ element.id }}"> {{ element.name }} </option>
                         {% endfor %}
                     </select>
                 </div>

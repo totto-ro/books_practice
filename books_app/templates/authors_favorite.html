@@ -10,7 +10,7 @@
 <body>
     <main>
         <section class="leftSide">
-            <h1>All Books</h1>
+            <h1>{{ authors['name'] }}'s Favorite Books</h1>
             <div class="tableDiv">
                 <table>
                     <thead>
@@ -32,12 +32,16 @@
             <a class="homelink" href="/authors">Home</a>
         </section>
         <section class="rightSide">
-            <form action="">
-                <h1>{{ authors['name'] }}'s favorites</h1>
+            <form action="/book/fav" method="POST">
+                <h1>Add Author's favorite</h1>
+                <h1>Book:</h1>
+                <input type="hidden" name="author_id" value="{{authors.id}}">
                 <div class="inputLines">
-                    <select name="book" id="book">
+                    <select name="book_id" id="book">
                         <option value="">--Select Book--</option>
-                        <option value=""> </option>
+                        {% for element in unfavorited_books %}
+                        <option value="{{element.id}}">{{ element.title }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 <button type="submit">
